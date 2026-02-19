@@ -64,17 +64,25 @@
       <div id="additional-inventory-container" class="character-print-grid">
         {% for c in inventory.containers %}
         <div style="margin-bottom: 1em" class="inventory-container print-container">
-          <div class="inventory-container-title-selected subtitle">{{c.name}} ( {{inventory.container_slots(c)}}
-            /
-            {{c.slots}} )</div>
+          <div class="inventory-container-title-selected subtitle">
+            {{ c.name }} ( {{ inventory.container_slots(c) }} / {{ c.slots }} )
+          </div>
+    
+          <!-- Existing item rendering -->
           {% for it in inventory.get_items_for_container(c.id, True) %}
-          <span class="inventory-item-container">{{it['title'] | safe}}</span>
+            <span class="inventory-item-container">{{ it['title'] | safe }}</span>
+          {% endfor %}
+    
+          <!-- Print empty lines for remaining slots -->
+          <!-- {{ inventory.container_slots(c) }} / {{ c.slots }} -->
+          {% for _ in range(inventory.container_slots(c), c.slots) %}
+            <span class="inventory-item-container">&nbsp;</span> <!-- Empty slot -->
           {% endfor %}
         </div>
         {% endfor %}
       </div>
     </div>
-
+    
     <div>
       {% if character.description != "" %}
       <div id="character-print-description-container" class="print-container">
