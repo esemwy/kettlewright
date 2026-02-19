@@ -90,7 +90,7 @@ class GeneratedCharacter:
         self.slots = 0
         self.description = ""
         self.containers = []
-        
+        self.image_url = "default-portrait.webp" 
     def used_slots(self):
         slots = 0
         for it in self.items:
@@ -156,7 +156,7 @@ class GeneratedCharacter:
         r['traits'] = traits_text(self.age, self.traits)
         r['willpower'] = self.attributes.wil
         r['willpower_max'] = self.attributes.wil
-        r['image_url'] = "default-portrait.webp"
+        r['image_url'] = self.image_url
         return r
 
 def find_background(list, bkg):
@@ -183,7 +183,7 @@ def generate_character(bkg):
     genchar.background_name = selected
     
     genchar.name = genchar.background['names'][random.randint(0,len(genchar.background['names'])-1)]
-    
+    genchar.image_url = f"portrait{random.randint(1,69)}.webp'
     bonds = load_bonds()
     genchar.bond = bonds[random.randint(0, len(bonds)-1)]
     
