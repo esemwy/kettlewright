@@ -183,7 +183,7 @@ def generate_character(bkg):
     genchar.background_name = selected
     
     genchar.name = genchar.background['names'][random.randint(0,len(genchar.background['names'])-1)]
-    genchar.image_url = f"portrait{random.randint(1,69)}.webp'
+    genchar.image_url = f"portrait{random.randint(1,69)}.webp"
     bonds = load_bonds()
     genchar.bond = bonds[random.randint(0, len(bonds)-1)]
     
