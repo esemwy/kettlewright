@@ -14,7 +14,7 @@ flask_cors
 flask_htmx
 flask_babel
 pybabel-json
-gunicorn
+gunicorn<26  # 26 removed the eventlet worker used in entrypoint.sh
 itsdangerous
 Jinja2
 libsass
